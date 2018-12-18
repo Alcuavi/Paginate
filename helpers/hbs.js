@@ -3,7 +3,7 @@ module.exports = (hbs) => {
         return currentPage == number ? 'active' : '';
     });
     hbs.registerHelper('prev_link', (pagination) => {
-        return pagination.href(true);
+        return pagination.href(true).prev;
     });
     hbs.registerHelper('next_link', (pagination) => {
         return pagination.href();

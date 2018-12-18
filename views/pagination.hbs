@@ -15,13 +15,25 @@
 <nav aria-label="Page pagination example">
     <ul class="pagination">
         {{#with paginate}}
-            {{#if hasPreviusPages}}
                 <li class="page-item prev">
-                    <a class="page-link" href="{{prev_link this}}">
-                        Anterior
-                    </a>
+                    <a class="page-link" href="{{prev_link this}}">Anterior</a>
                 </li>
-            {{/if}}
+        {{/with}}
+
+        {{#each links}}
+            <li class="page-item" {{is_active @index ../currentPage }}>
+                <a class="page-link" href="{{url}}">
+                    {{number}}
+                </a>
+            </li>
+        {{/each}}
+
+        {{#with paginate}}
+            {{#has_next_links ../pageCount this}}
+            <li class="page-item next">
+                <a class="page-link" href="{{next_link ../this }}">Siguiente</a>
+            </li>
+            {{/has_next_links}}
         {{/with}}
     </ul>
 </nav>

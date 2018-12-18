@@ -18,7 +18,7 @@ class pagController {
             //Calculos de paginacion
             let currentPage = offset === 0 ? 1 :(offset/limit)+1;
             let totalCount = films.count;
-            let pageCount = Match.ceil(totalCount/limit);
+            let pageCount = Math.ceil(totalCount/limit);
             let pagination = Paginate.getArrayPages(this.req)(10, pageCount, currentPage);
 
             console.log(JSON.stringify(films));
@@ -27,7 +27,8 @@ class pagController {
                 currentPage,
                 links: pagination,
                 hasNext: Paginate.hasNextPages(pageCount),
-                pageCount
+                pageCount,
+                Paginate
             })
         } catch (error){
             console.error(error);

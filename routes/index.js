@@ -6,9 +6,10 @@ var PagController = require('../controllers/pagController');
 router.get('/', function(req, res, next) {
   let page = (parseInt(req.query.page)||1) -1;
   let limit = 50;
+  let offset= page * limit;
 
   pagController = new PagController(req, res, next);
-  pagController.paginate(10,5);
+  pagController.paginate(offset,limit);
 });
 
 module.exports = router;
